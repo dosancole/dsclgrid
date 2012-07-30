@@ -1,9 +1,12 @@
 /*
- * dsclgrid for jQuery - v0.1
- *
- * Copyright (c) 2011 takuya Dosancole.
+ * dsclgrid for jQuery - v0.5
+ * http://dosancole.github.com/dsclgrid/
+ * 
+ * Copyright (c) 2011- takuya Dosancole.
  * Dual licensed under the MIT or GPL Version 2 licenses.
  * http://jquery.org/license
+ *
+ * Some icons are created by http://www.fatcow.com/free-icons .
  */
 (function($) {
     $.addDsclgrid = function(t, p) {
