@@ -1,0 +1,332 @@
+@charset "UTF-8";
+.dsclgrid {
+    font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka-等幅", monospace;
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+.dsclgrid th {
+    font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka-等幅", monospace;
+    white-space:normal;
+    word-break:break-all;
+}
+.dsclgrid th {
+    color: white;
+    background-color: #245686;
+}
+
+
+.dsclgrid th.asc0 {
+    color: black;
+    border-color: #ffaa00;
+	background: #ffFCbb url(dsclgridimg/bullet_arrow_down.png) no-repeat right ;
+}
+.dsclgrid th.asc1 {
+    color: black;
+    border-color: #ffaa00;
+	background: #dddcaa url(dsclgridimg/bullet_arrow_down.png) no-repeat right;
+}
+.dsclgrid th.asc2 {
+    color: black;
+    border-color: #ffaa00;
+	background: #bbbc99 url(dsclgridimg/bullet_arrow_down.png) no-repeat right;
+}
+.dsclgrid th.desc0 {
+    color: black;
+    border-color: #ffaa00;
+	background: #ffFCbb url(dsclgridimg/bullet_arrow_up.png) no-repeat right;
+}
+.dsclgrid th.desc1 {
+    color: black;
+    border-color: #ffaa00;
+	background: #dddcaa url(dsclgridimg/bullet_arrow_up.png) no-repeat right;
+}
+.dsclgrid th.desc2 {
+    color: black;
+    border-color: #ffaa00;
+	background: #bbbc99 url(dsclgridimg/bullet_arrow_up.png) no-repeat right;
+}
+.dsclgrid td {
+    font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka-等幅", monospace;
+    white-space:normal;
+    word-break:break-all;
+}
+
+
+.dsclgrid .sSky-Fixed td{
+    background-color: white;
+}
+
+.dsclgrid tr.even td {
+    background-color: #f0f0f0;
+}
+
+.dsclgrid table tr.rowselect td {
+    background-color: #0099FF;
+    color: white;
+}
+
+.dsclgrid table.sSky-Fixed tr.rowselect td {
+    background-color: #0099FF;
+}
+
+
+.dsclgrid td.ope {
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+
+.dsclgrid div.pButton {
+    float: left;
+    position: relative;
+    width: 22px;
+    height: 12px;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+.dsclgrid div.pButton:hover, .dsclpager div.pButton.pBtnOver {
+    width: 20px;
+    height: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 1px;
+    border-left: 1px solid #ccc;
+    margin-left: 1px;
+    cursor: pointer;
+}
+.dsclgrid div.pEdit{
+    background: url(dsclgridimg/edit-edit.gif) no-repeat center;
+}
+.dsclgrid div.pCancel {
+    background: url(dsclgridimg/edit-cancel.gif) no-repeat center;
+}
+.dsclgrid div.pUpdate {
+    background: url(dsclgridimg/edit-update.gif) no-repeat center;
+}
+.dsclgrid div.pRegist {
+    background: url(dsclgridimg/edit-regist.gif) no-repeat center;
+}
+.dsclgrid div.pAdd {
+    background: url(dsclgridimg/edit-add.gif) no-repeat center;
+}
+.dsclgrid div.pRemove {
+    background: url(dsclgridimg/edit-remove.gif) no-repeat center;
+}
+.dsclgrid div.pNone {
+    float: left;
+    position: relative;
+    width: 22px;
+    height: 12px;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background: url(dsclgridimg/edit-none.gif) no-repeat center;
+}
+
+/*
+.dsclgrid div.pButton span {
+    width: 22px;
+    height: 12px;
+    display: block;
+    float: left;
+}*/
+
+/*.dsclgrid div.pButton:hover span, .dsclpager div.pButton.pBtnOver span {
+    width: 20px;
+    height: 10px;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+}*/
+
+
+
+
+
+
+
+.dsclgrid td span.normal {
+    color: #ccc;
+}
+.dsclgrid td span.normal a {
+    color: #0080ff;
+    text-decoration: none;
+}
+.dsclgrid td span.normal a:hover {
+    color: #0080ff;
+    text-decoration: underline;
+}
+.dsclgrid td span.editing {
+    color: #ccc;
+}
+.dsclgrid td span.editing a {
+    color: #0080ff;
+    text-decoration: none;
+}
+.dsclgrid td span.editing a:hover {
+    color: #0080ff;
+    text-decoration: underline;
+}
+.dsclgrid td span.exclude {
+    color: #ccc;
+}
+.dsclgrid td span.exclude a {
+    color: #0080ff;
+    text-decoration: none;
+}
+.dsclgrid td span.exclude a:hover {
+    color: #0080ff;
+    text-decoration: underline;
+}
+
+.disabled td span.normal a {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+}
+.disabled td span.normal a:hover {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+}
+.disabled td span.editing a {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+}
+.disabled td span.editing a:hover {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+}
+.disabled td span.exclude a {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+}
+.disabled td span.exclude a:hover {
+    color: #ccc;
+    text-decoration: none;
+    cursor: default;
+}
+
+
+.dscltitlebar {
+    font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka-等幅", monospace;
+    margin-bottom: 1px;
+    padding: 0px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: #eee;
+    display: block;
+    height: 26px;
+    font-size: 11px;
+    position: relative;
+}
+.dscltitlebar div.title {
+    float: left;
+    margin: 8px;
+}
+.dscltitlebar div.status {
+    float: left;
+}
+.dscltitlebar div.icon {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    /*width: 24px;*/
+    width: 24px;
+    height: 24px;
+}
+.dscltitlebar div.loading {
+    background: url(dsclgridimg/indicator.gif) no-repeat center;
+}
+.dsclsorter {
+    font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka-等幅", monospace;
+    margin-top: 1px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    background: #eee;
+    display: block;
+    height: 26px;
+    font-size: 11px;
+}
+.dsclpager {
+    font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka-等幅", monospace;
+    margin-top: 1px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    background: #eee;
+    display: block;
+    height: 26px;
+    font-size: 11px;
+}
+.dsclpager div.icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+}
+.dsclpager div.loading {
+    background: url(dsclgridimg/indicator.gif) no-repeat center;
+}
+.dsclpager div.pButton {
+    float: left;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 0px;
+    cursor: pointer;
+}
+.dsclpager div.pButton:hover, .dsclpager div.pButton.pBtnOver {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.dsclpager div.pFirst {
+    background: url(dsclgridimg/resultset_first.png) no-repeat center;
+}
+.dsclpager div.pPrev {
+    background: url(dsclgridimg/resultset_previous.png) no-repeat center;
+}
+.dsclpager div.pNext {
+    background: url(dsclgridimg/resultset_next.png) no-repeat center;
+}
+.dsclpager div.pLast {
+    background: url(dsclgridimg/resultset_last.png) no-repeat center;
+}
+.dsclpager div.pButton span {
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: left;
+}
+.dsclpager div.pButton:hover span, .dsclpager div.pButton.pBtnOver span {
+    width: 19px;
+    height: 19px;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+.dsclpager div.pPage {
+    float: left;
+    margin: 4px;
+}
+.dsclpager div.pPage span {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.dsclpager div.pMessage {
+    float: left;
+    margin: 8px;
+}
+.dsclpager div.pSeparator {
+    float: left;
+    height: 22px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #fff;
+    margin: 2px;
+}
+
