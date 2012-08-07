@@ -62,6 +62,9 @@ $(function(){
 Change Log
 -----
 
+*  v0.5
+    *  first public version.
+
 -----
 
 Quick Start
