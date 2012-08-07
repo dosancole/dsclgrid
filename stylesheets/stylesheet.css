@@ -28,6 +28,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	font: 13px Helvetica,arial,freesans,clean,sans-serif !important;
 	line-height: 1;
 }
 ol, ul {
@@ -90,7 +91,7 @@ header h2 {
 }
 
 .inner {
-  width: 620px;
+  width: 780px;
   margin: 0 auto;
 }
 
