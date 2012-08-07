@@ -22,6 +22,29 @@ dsclgrid.jsは、業務系Webアプリケーションでの利用を想定した
 
 Quick Start
 -----
+
+<script type="text/javascript">
+$(function(){
+    $('#sample000').dsclgrid({
+        method: "GET",
+        titlebar: false,
+        width: "400px",
+        height: "200px",
+        url: "sample/000/data.json",
+        fixedCols : 2,
+        model : [
+            {display: 'ユーザ名', name : 'name',    width: 100, align: 'left'  },
+            {display: '管理番号', name : 'number',  width: 80,  align: 'center'},
+            {display: '住所',    name : 'depart',  width: 150, align: 'left'  },
+            {display: '年齢',    name : 'age',     width: 50,  align: 'right' },
+            {display: '備考',    name : 'comment', width: 200, align: 'left'  }
+        ]
+    });
+    $('#sample000').dsclgridLoad();
+});
+</script>
+<div style="padding:20px;"><div id="sample000"></div></div>
+
 表頭・表側固定の一番シンプルなテーブルを表示してみます。以下の htmlファイルを用意してください。
 
     <html>
@@ -40,6 +63,7 @@ Quick Start
     $(function(){
         $('#sample000').dsclgrid({
             titlebar: false,
+            method: "GET",
             width: "400px",
             height: "200px",
             url: "data.json",
