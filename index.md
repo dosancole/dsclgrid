@@ -25,20 +25,20 @@ Quick Start4
 
     <html>
     <head>
-    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="../../web/css/superTables.css" />
         <link rel="stylesheet" type="text/css" href="../../web/css/dsclgrid.css" />
         <link rel="stylesheet" type="text/css" href="../../web/css/jqueryui/jquery-ui-1.8.16.custom.css" />
-    	<script type="text/javascript" src="../../web/js/jquery-1.6.2.min.js"></script>
-    	<script type="text/javascript" src="../../web/js/jquery-ui-1.8.16.custom.min.js"></script>
+        <script type="text/javascript" src="../../web/js/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="../../web/js/jquery-ui-1.8.16.custom.min.js"></script>
         <script type="text/javascript" src="../../web/js/superTables.js" ></script>
         <script type="text/javascript" src="../../web/js/dsclgrid.js" ></script>
-    	<title>dsclgrid.js sample 001</title>
-    	<script type="text/javascript">
+        <title>dsclgrid.js sample 000</title>
+        <script type="text/javascript">
     
     $(function(){
         $('#sample000').dsclgrid({
-        	titlebar: false,
+            titlebar: false,
             width: "400px",
             height: "200px",
             url: "data.json",
@@ -54,11 +54,29 @@ Quick Start4
         $('#sample000').dsclgridLoad();
     });
     	
-    	</script>
+        </script>
     </head>
     <body>
-    	<div id="sample000"></div>
+        <div id="sample000"></div>
     </body>
     </html>
 
 サーバ相当のJSONを返却する data.json を用意します（簡単のために固定のものです）。
+
+    {
+        "offset" : 0,
+        "page"   : 1,
+        "rows"   : [
+            { "cell" : ["sato",     "0001","tokyo Japan",    "20", "comment."] },
+            { "cell" : ["suzuki",   "0002","hokkaido Japan", "45", "comment."] },
+            { "cell" : ["takahashi","0003","okinawa Japan",  "25", "comment."] },
+            { "cell" : ["tanaka",   "0004","kanagawa Japan", "35", "comment."] },
+            { "cell" : ["watanabe", "0005","osaka Japan",    "30", "comment."] },
+            { "cell" : ["ito",      "0006","sendai Japan",   "22", "comment."] },
+            { "cell" : ["nakamura", "0007","aomori Japan",   "49", "comment."] },
+            { "cell" : ["yamamoto", "0008","nagoya Japan",   "52", "comment."] },
+            { "cell" : ["kobayashi","0009","toyama Japan",   "23", "comment."] },
+            { "cell" : ["saito",    "0010","shimane Japan",  "32", "comment."] }
+        ],
+        "total"  : 2
+    }
