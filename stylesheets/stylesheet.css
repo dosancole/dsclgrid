@@ -213,6 +213,7 @@ hr {
 }
 
 strong {
+  color: #f55;
   font-weight: bold;
 }
 
@@ -284,7 +285,7 @@ p {
 }
  
 a {
-  text-decoration: none;
+  /*text-decoration: none;*/
 }
 
 p a {
