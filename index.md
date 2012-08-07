@@ -1,6 +1,6 @@
 ---
 layout: default
-title: プロジェクト・タイトル
+title: dsclgrid.js - 表頭表側固定の多機能jQueryテーブル
 ---
  
 dsclgrid.jsは表頭表側固定の多機能jQueryテーブルです。  
