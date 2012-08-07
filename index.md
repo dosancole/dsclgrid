@@ -20,6 +20,41 @@ dsclgrid.jsは、業務系Webアプリケーションでの利用を想定した
 
 -----
 
+Quick View
+-----
+表頭・表側を固定し、ajaxによるサーバ取得、ページャ、3段の多段ソート、行選択の
+例です。（サーバが出力するデータは静的なもので、ページャやソートは動作しません）
+
+<script type="text/javascript">
+$(function(){
+    $('#qv').dsclgrid({
+        method: "GET",
+        title: "Quick View Table",
+        width: "700px",
+        height: "200px",
+        url: "qvdata.json",
+        fixedCols : 2,
+        pager: true,
+        pagestat : "from {from} to {to} / all {total}",
+        sortable: true,
+        sortNum: 3,
+        selectable: true,
+        model : [
+            {display: 'ユーザ名', name : 'name',    width: 100, align: 'left'  },
+            {display: '管理番号', name : 'number',  width: 80,  align: 'center'},
+            {display: '住所',    name : 'depart',  width: 200, align: 'left'  },
+            {display: '年齢',    name : 'age',     width: 50,  align: 'right' },
+            {display: '電話番号', name : 'tel',     width: 200, align: 'center' },
+            {display: '備考',    name : 'comment', width: 200, align: 'left'  }
+        ]
+    });
+    $('#qv').dsclgridLoad();
+});
+</script>
+<div style="padding:20px;padding-top:0px;"><div id="qv"></div></div>
+
+-----
+
 Quick Start
 -----
 
@@ -43,7 +78,7 @@ $(function(){
     $('#sample000').dsclgridLoad();
 });
 </script>
-<div style="padding:20px;"><div id="sample000"></div></div>
+<div style="padding:20px;padding-top:0px;"><div id="sample000"></div></div>
 
 表頭・表側固定の一番シンプルなテーブルを表示してみます。以下の htmlファイルを用意してください。
 
