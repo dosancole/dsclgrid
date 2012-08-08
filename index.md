@@ -161,7 +161,7 @@ dsclgridLoadメソッドでデータをサーバからロードすることが�
 
 ####さらに・・・####
 
-[詳しい説明へ](details.html)
+[詳しい説明へ](details.html)  
 [簡易編集の説明へ](edit.html)
 
 License
