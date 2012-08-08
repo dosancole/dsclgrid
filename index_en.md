@@ -158,7 +158,7 @@ In the way, we were able to easily load data from the server!
 
 ####In addition...####
 
-[go to detailed explanation](details.html)(sorry, only japanese.)
+[go to detailed explanation](details.html)(sorry, only japanese.)  
 [go to explanation of simple edit](edit.html)(sorry, only japanese.)
 
 License

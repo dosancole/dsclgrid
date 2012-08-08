@@ -6,7 +6,7 @@ title: dsclgrid.js - 簡易編集の説明
 Contents
 -----
 
-[トップページ](index.html)
+[トップページ](index.html)  
 [詳しい説明](details.html)
 
 簡易編集の説明
