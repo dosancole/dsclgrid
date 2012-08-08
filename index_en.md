@@ -1,31 +1,31 @@
 ---
 layout: default
-title: dsclgrid.js - 表頭表側固定の多機能jQueryテーブル
+title: dsclgrid.js - multi-functional table(fixed table head and side) for jQuery.
 ---
  
-dsclgrid.jsは表頭表側固定の多機能jQueryテーブルです。  
 dsclgrid.js is a multi-functional table(fixed table head and side) for jQuery.
 
-Japanese / [English](index_en.html)
+[Japanese](index.html) / English
 
 Features
 -----
+In the development of Web applications business system,
+there is a scene we want to represent a large table (was used in Excel).
 
-業務系Webアプリケーションの開発では、今までExcelで運用していた大きな表を表現したいシーンがよくあります。
-dsclgrid.jsは、業務系Webアプリケーションでの利用を想定した以下の機能を持つ多機能テーブルです。
+dsclgrid.js is a multi-functional table with the following features were intended to be used in Web applications business system.
 
--   表頭・表側固定（ヘッダ固定）
--   ajaxによるサーバ連携
--   ページャ
--   多段ソート
--   行選択
--   簡易編集
+-   fixed table head and side ( fixed header ).
+-   collaboration server by Ajax.
+-   pager.
+-   multistage sort.
+-   select row.
+-   quick edit.
 
 
 Sample View
 -----
-表頭・表側を固定し、ajaxによるサーバ取得、ページャ、3段の多段ソート、行選択の
-例です。（サーバが出力するデータは静的なもので、ページャやソートは動作しません^^;）
+This sample is a fixed table head and side, collaboration server by Ajax, pager, multistage(3) sort, select row.
+(The data from server is static, pager and sorter does not work.)
 
 <script type="text/javascript">
 $(function(){
@@ -42,12 +42,12 @@ $(function(){
         sortNum: 3,
         selectable: true,
         model : [
-            {display: 'ユーザ名', name : 'name',    width: 100, align: 'left'  },
-            {display: '管理番号', name : 'number',  width: 80,  align: 'center'},
-            {display: '住所',    name : 'depart',  width: 200, align: 'left'  },
-            {display: '年齢',    name : 'age',     width: 50,  align: 'right' },
-            {display: '電話番号', name : 'tel',     width: 200, align: 'center' },
-            {display: '備考',    name : 'comment', width: 200, align: 'left'  }
+            {display: 'user name', name : 'name',    width: 100, align: 'left'  },
+            {display: 'number', name : 'number',  width: 80,  align: 'center'},
+            {display: 'address',    name : 'depart',  width: 200, align: 'left'  },
+            {display: 'age',    name : 'age',     width: 50,  align: 'right' },
+            {display: 'tel', name : 'tel',     width: 200, align: 'center' },
+            {display: 'comment',    name : 'comment', width: 200, align: 'left'  }
         ]
     });
     $('#qv').dsclgridLoad();
@@ -64,13 +64,11 @@ Change Log
 Quick Start
 -----
 
-ここでは表頭・表側固定の一番シンプルなテーブルを表示してみます。
-事前に[ダウンロード](https://github.com/dosancole/dsclgrid/zipball/master "ダウンロード")したファイルを展開、配置しておいてください。
-参照可能な位置にhtmlファイルとJSONのデータファイルを作成します。
+We will try to display a simple table(fixed head and side).
+In advance, please extract the files that you [downloaded](https://github.com/dosancole/dsclgrid/zipball/master).
 
-
-まずは以下のhtmlファイルを用意してください。  
-※cssとjavascriptのURL、後で用意するdata.jsonのURLは、配置場所によって修正してください。
+First, please prepare the following html file.  
+*Url(css and javascript, data.json), please fixe by location.
 
     <html>
     <head>
@@ -94,11 +92,11 @@ Quick Start
             url: "data.json",
             fixedCols : 2,
             model : [
-                {display: 'ユーザ名', name : 'name',    width: 100, align: 'left'  },
-                {display: '管理番号', name : 'number',  width: 80,  align: 'center'},
-                {display: '住所',    name : 'depart',  width: 150, align: 'left'  },
-                {display: '年齢',    name : 'age',     width: 50,  align: 'right' },
-                {display: '備考',    name : 'comment', width: 200, align: 'left'  }
+                {display: 'user name', name : 'name',    width: 100, align: 'left'  },
+                {display: 'number', name : 'number',  width: 80,  align: 'center'},
+                {display: 'address',    name : 'depart',  width: 150, align: 'left'  },
+                {display: 'age',    name : 'age',     width: 50,  align: 'right' },
+                {display: 'comment',    name : 'comment', width: 200, align: 'left'  }
             ]
         });
         $('#sample000').dsclgridLoad();
@@ -111,7 +109,7 @@ Quick Start
     </body>
     </html>
 
-次にサーバ相当のJSONを返却する data.json を用意します（簡単のために固定のものです）。
+Next, prepare data.json.
 
     {
         "offset" : 0,
@@ -131,8 +129,8 @@ Quick Start
         "total"  : 10
     }
 
-以下が表示できます。  
-※ローカル環境のchromeで確認する場合、```--allow-file-access-from-files```オプションで起動する必要があります。
+The following can be displayed.  
+*If you want to see in the Chrome of the local environent, you need to start the ```--allow-file-access-from-files``` option.
 
 <script type="text/javascript">
 $(function(){
@@ -144,11 +142,11 @@ $(function(){
         url: "sample/000/data.json",
         fixedCols : 2,
         model : [
-            {display: 'ユーザ名', name : 'name',    width: 100, align: 'left'  },
-            {display: '管理番号', name : 'number',  width: 80,  align: 'center'},
-            {display: '住所',    name : 'depart',  width: 150, align: 'left'  },
-            {display: '年齢',    name : 'age',     width: 50,  align: 'right' },
-            {display: '備考',    name : 'comment', width: 200, align: 'left'  }
+            {display: 'user name', name : 'name',    width: 100, align: 'left'  },
+            {display: 'number', name : 'number',  width: 80,  align: 'center'},
+            {display: 'address',    name : 'depart',  width: 150, align: 'left'  },
+            {display: 'age',    name : 'age',     width: 50,  align: 'right' },
+            {display: 'comment',    name : 'comment', width: 200, align: 'left'  }
         ]
     });
     $('#sample000').dsclgridLoad();
@@ -156,13 +154,12 @@ $(function(){
 </script>
 <div style="padding:20px;padding-top:0px;"><div id="sample000"></div></div>
 
-このようにdivをひとつ用意し、jQueryの一般的なライブラリと同様にdsclgridメソッドで表を生成し、
-dsclgridLoadメソッドでデータをサーバからロードすることができました！
+In the way, we were able to easily load data from the server!
 
-####さらに・・・####
+####In addition...####
 
-[詳しい説明へ](details.html)  
-[簡易編集の説明へ](edit.html)
+[go to detailed explanation](details.html)(sorry, only japanese.)  
+[go to explanation of simple edit](edit.html)(sorry, only japanese.)
 
 License
 -----
