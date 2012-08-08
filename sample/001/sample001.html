@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../../web/css/superTables.css" />
+    <link rel="stylesheet" type="text/css" href="../../web/css/dsclgrid.css" />
+    <link rel="stylesheet" type="text/css" href="../../web/css/jqueryui/jquery-ui-1.8.16.custom.css" />
+	<script type="text/javascript" src="../../web/js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="../../web/js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="../../web/js/superTables.js" ></script>
+    <script type="text/javascript" src="../../web/js/dsclgrid.js" ></script>
+	<title>dsclgrid.js sample 001</title>
+	<script type="text/javascript">
+
+$(function(){
+    $('#sample001').dsclgrid({
+        method: "GET",
+        titlebar: false,
+        width: "730px",
+        height: "150px",
+        url: "data.json",
+        urlRegist: "success.html",
+        urlUpdate: "success.html",
+        urlDelete: "success.html",
+        calendarIconUrl: "../../web/css/dsclgridimg/bullet_arrow_down.png",
+        fixedCols : 2,
+        editable: true,
+        model : [
+            {display: 'ユーザ名',   name : 'name',    width: 100, align: 'left',   edittype: "text"  },
+            {display: 'パスワード', name : 'password',  width: 80,  align: 'left',   edittype: "password"  },
+            {display: '住所',      name : 'depart',  width: 150, align: 'left',   edittype: "text"    },
+            {display: '年齢',      name : 'age',     width: 100,  align: 'left',  edittype: "select",  select: [{name:'20代',value:'20'},{name:'30代',value:'30'},{name:'40代',value:'40'}] },
+            {display: '更新日',      name : 'update', width: 150, align: 'left',  edittype: "date"    }
+        ]
+    });
+    $('#sample001').dsclgridLoad();
+});
+	
+	</script>
+</head>
+	<body>
+		<div id="sample001"></div>
+	</body>
+</html>
