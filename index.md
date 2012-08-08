@@ -6,23 +6,19 @@ title: dsclgrid.js - 表頭表側固定の多機能jQueryテーブル
 dsclgrid.jsは表頭表側固定の多機能jQueryテーブルです。  
 dsclgrid.js is a multi-functional table(fixed table head and side) for jQuery.
 
------
-
 Features
 -----
 
 業務系Webアプリケーションの開発では、今までExcelで運用していた大きな表を表現したいシーンがよくあります。
 dsclgrid.jsは、業務系Webアプリケーションでの利用を想定した以下の機能を持つ多機能テーブルです。
 
--   表頭・表側固定
+-   表頭・表側固定（ヘッダ固定）
 -   ajaxによるサーバ連携
 -   ページャ
 -   多段ソート
 -   行選択
 -   簡易編集
 
-
------
 
 Sample View
 -----
@@ -57,15 +53,11 @@ $(function(){
 </script>
 <div style="padding:20px;padding-top:0px;"><div id="qv"></div></div>
 
------
-
 Change Log
 -----
 
 *  v0.5
     *  first public version.
-
------
 
 Quick Start
 -----
@@ -166,8 +158,6 @@ $(function(){
 dsclgridLoadメソッドでデータをサーバからロードすることができました！
 
 [さらに詳しい説明へ](details.html)
-
------
 
 License
 -----
