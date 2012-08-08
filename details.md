@@ -6,7 +6,7 @@ title: dsclgrid.js - 詳しい説明
 Contents
 -----
 
-[トップページ](/)
+[トップページ](index.html)
 
 詳しい説明
 
@@ -27,7 +27,7 @@ Contents
     *  [dsclgridGetSorterOrder](#dsclgridGetSorterOrder)
     *  [dsclgridDisabled](#dsclgridDisabled)
 
-[簡易編集の説明](/edit.html)
+[簡易編集の説明](edit.html)
 
 <a name="generate"></a>dsclgridの生成
 -----
@@ -196,7 +196,7 @@ clはオプションで行単位で付与することで、その行の tr タ�
 実際に表示されるcellの値は、dsclgrid.jsでエスケープしていません。サーバ側で適切にエスケープ（CSS等対策）してください。
 反面、改行タグやアンカータグを自由に入れることができます。
 
-簡易編集機能については、[簡易編集の説明](/edit.html)をご参照ください。
+簡易編集機能については、[簡易編集の説明](edit.html)をご参照ください。
 
 <a name="etcmethod"></a>その他のメソッド
 -----
