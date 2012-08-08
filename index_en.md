@@ -2,7 +2,7 @@
 layout: default
 title: dsclgrid.js - multi-functional table(fixed table head and side) for jQuery.
 ---
- 
+
 dsclgrid.js is a multi-functional table(fixed table head and side) for jQuery.
 
 [Japanese](index.html) / English
@@ -67,7 +67,7 @@ Quick Start
 We will try to display a simple table(fixed head and side).
 In advance, please extract the files that you [downloaded](https://github.com/dosancole/dsclgrid/zipball/master).
 
-First, please prepare the following html file.  
+First, please prepare the following html file.
 *Url(css and javascript, data.json), please fixe by location.
 
     <html>
@@ -82,7 +82,7 @@ First, please prepare the following html file.
         <script type="text/javascript" src="web/js/dsclgrid.js" ></script>
         <title>dsclgrid.js sample 000</title>
         <script type="text/javascript">
-    
+
     $(function(){
         $('#sample000').dsclgrid({
             titlebar: false,
@@ -101,10 +101,10 @@ First, please prepare the following html file.
         });
         $('#sample000').dsclgridLoad();
     });
-    	
+
         </script>
     </head>
-    <body>
+    <body style="font-size:15px;">
         <div id="sample000"></div>
     </body>
     </html>
@@ -129,7 +129,7 @@ Next, prepare data.json.
         "total"  : 10
     }
 
-The following can be displayed.  
+The following can be displayed.
 *If you want to see in the Chrome of the local environent, you need to start the ```--allow-file-access-from-files``` option.
 
 <script type="text/javascript">
@@ -158,13 +158,13 @@ In the way, we were able to easily load data from the server!
 
 ####In addition...####
 
-[go to detailed explanation](details.html)(sorry, only japanese.)  
+[go to detailed explanation](details.html)(sorry, only japanese.)
 [go to explanation of simple edit](edit.html)(sorry, only japanese.)
 
 License
 -----
 Copyright &copy; 2012 [takuya Dosancole].
-Dual licensed under the [MIT license][MIT] or [GPL Verion 2 license][GPL].  
+Dual licensed under the [MIT license][MIT] or [GPL Verion 2 license][GPL].
 dsclgrid.js includes [jQuery] and [SUPER TABLES]. please check each license.
 
 [MIT]: http://www.opensource.org/licenses/mit-license.php

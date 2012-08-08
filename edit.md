@@ -6,7 +6,7 @@ title: dsclgrid.js - 簡易編集の説明
 Contents
 -----
 
-[トップページ](index.html)  
+[トップページ](index.html)
 [詳しい説明](details.html)
 
 簡易編集の説明
@@ -28,7 +28,7 @@ dsclgrid.jsは簡易編集の機能も有しており、1行ごとの新規、�
 <a name="sample"></a>実装例
 -----
 
-動作イメージを以下に示します。行の左側のアイコンで新規、更新、削除の動作イメージを確認してください。  
+動作イメージを以下に示します。行の左側のアイコンで新規、更新、削除の動作イメージを確認してください。
 ※サーバは静的なデータを返却しているため、反映はされません。
 
 <script type="text/javascript">
@@ -62,7 +62,7 @@ $(function(){
 
 ####<a name="edit-html"></a>htmlファイル####
 
-まずは以下のhtmlファイルを用意してください。  
+まずは以下のhtmlファイルを用意してください。
 ※cssとjavascriptのURL、後で用意するdata.json, success.jsonのURLは、配置場所によって修正してください。
 
     <html>
@@ -77,7 +77,7 @@ $(function(){
         <script type="text/javascript" src="web/js/dsclgrid.js" ></script>
         <title>dsclgrid.js sample 000</title>
         <script type="text/javascript">
-    
+
     $(function(){
         $('#sample001').dsclgrid({
             method: "GET",
@@ -101,10 +101,10 @@ $(function(){
         });
         $('#sample001').dsclgridLoad();
     });
-        
+
         </script>
     </head>
-    <body>
+    <body style="font-size:15px;">
         <div id="sample001"></div>
     </body>
     </html>
@@ -134,7 +134,7 @@ edittype:selectのカラムは、valueからnameへ変換されて表示しま�
 ####<a name="edit-success"></a>結果ファイル####
 
 最後にサーバ相当の結果を返却する、success.json を用意します。
-空の返却が成功を意味するため、ここでは空ファイルとします。  
+空の返却が成功を意味するため、ここでは空ファイルとします。
 ※ローカルファイル環境での確認では、空ファイルをうまく取得できない可能性があります。その場合にはWebサーバに配置してご確認ください。
 
 ここまでで、サンプルの動作が確認できます。

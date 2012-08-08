@@ -2,8 +2,8 @@
 layout: default
 title: dsclgrid.js - 表頭表側固定の多機能jQueryテーブル
 ---
- 
-dsclgrid.jsは表頭表側固定の多機能jQueryテーブルです。  
+
+dsclgrid.jsは表頭表側固定の多機能jQueryテーブルです。
 dsclgrid.js is a multi-functional table(fixed table head and side) for jQuery.
 
 Japanese / [English](index_en.html)
@@ -69,7 +69,7 @@ Quick Start
 参照可能な位置にhtmlファイルとJSONのデータファイルを作成します。
 
 
-まずは以下のhtmlファイルを用意してください。  
+まずは以下のhtmlファイルを用意してください。
 ※cssとjavascriptのURL、後で用意するdata.jsonのURLは、配置場所によって修正してください。
 
     <html>
@@ -84,7 +84,7 @@ Quick Start
         <script type="text/javascript" src="web/js/dsclgrid.js" ></script>
         <title>dsclgrid.js sample 000</title>
         <script type="text/javascript">
-    
+
     $(function(){
         $('#sample000').dsclgrid({
             titlebar: false,
@@ -103,10 +103,10 @@ Quick Start
         });
         $('#sample000').dsclgridLoad();
     });
-    	
+
         </script>
     </head>
-    <body>
+    <body style="font-size:15px;">
         <div id="sample000"></div>
     </body>
     </html>
@@ -131,7 +131,7 @@ Quick Start
         "total"  : 10
     }
 
-以下が表示できます。  
+以下が表示できます。
 ※ローカル環境のchromeで確認する場合、```--allow-file-access-from-files```オプションで起動する必要があります。
 
 <script type="text/javascript">
@@ -161,13 +161,13 @@ dsclgridLoadメソッドでデータをサーバからロードすることが�
 
 ####さらに・・・####
 
-[詳しい説明へ](details.html)  
+[詳しい説明へ](details.html)
 [簡易編集の説明へ](edit.html)
 
 License
 -----
 Copyright &copy; 2012 [takuya Dosancole].
-Dual licensed under the [MIT license][MIT] or [GPL Verion 2 license][GPL].  
+Dual licensed under the [MIT license][MIT] or [GPL Verion 2 license][GPL].
 dsclgrid.js includes [jQuery] and [SUPER TABLES]. please check each license.
 
 [MIT]: http://www.opensource.org/licenses/mit-license.php
