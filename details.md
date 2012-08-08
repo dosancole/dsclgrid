@@ -6,7 +6,9 @@ title: dsclgrid.js - 詳しい説明
 Contents
 -----
 
-[トップページへ](/)
+[トップページ](/)
+
+詳しい説明
 
 *  [dsclgridの生成](#generate)
     *  [dsclgrid（コンストラクタ）](#constructor)
@@ -24,6 +26,8 @@ Contents
     *  [dsclgridGetSelectedHidden](#dsclgridGetSelectedHidden)
     *  [dsclgridGetSorterOrder](#dsclgridGetSorterOrder)
     *  [dsclgridDisabled](#dsclgridDisabled)
+
+[簡易編集の説明](/edit.html)
 
 <a name="generate"></a>dsclgridの生成
 -----
@@ -52,9 +56,9 @@ dsclgridオブジェクトは、jqueryオブジェクトに対してdsclgrid()�
     height: "200px",                           // 縦幅
     method: "POST",                            // ajaxのメソッド種別
     url: "/hoge/ajaxList",               // 必須。検索のURL
-    urlRegist:  "/hoge/ajaxRegist')}",   // 登録のURL
-    urlUpdate:  "/hoge/ajaxUpdate')}",   // 更新のURL
-    urlDelete:  "/hoge/ajaxDelete')}",   // 削除のURL
+    urlRegist:  "/hoge/ajaxRegist",   // 登録のURL
+    urlUpdate:  "/hoge/ajaxUpdate",   // 更新のURL
+    urlDelete:  "/hoge/ajaxDelete",   // 削除のURL
     tokenKey: "org.apache.struts.taglib.html.TOKEN", // 登録、更新、削除時に発行するトークンのキー。既定値は false。
     token: "xxxxxxx",                                // 登録、更新、削除時に発行するトークン文字列。
                                                      // 画面初期表示時にトークンを発行し、その後何度も本トークンを使う形となるため、
@@ -120,7 +124,7 @@ dsclgridを生成したら、次に一覧を表示します。
 ####<a name="dsclgridload-client"></a>dsclgridload クライアント側の実装####
 
 クライアント側では dsclgridオブジェクトに対して、dsclgridLoadメソッドを実行します。
-指定したパラメータに従ってdsclgridがサーバに要求を発行し、その応答によって見た目を更新します。
+指定したパラメータに従ってdsclgrid.jsがサーバに要求を発行し、その応答によって見た目を更新します。
 
     $(xxx).dsclgridLoad({
         querySql: 'id = ? and verion = ?',   // where句部分。省略可。
@@ -131,6 +135,7 @@ dsclgridを生成したら、次に一覧を表示します。
     });
 
 サーバには、urlパラメータで指定したURLに、以下のパラメータでアクセスされます。
+（GETの例です。method="POST"の場合には、POSTで送信します。）
 
     /hoge/ajaxList?dsclgridPage=xx&dsclgridRp=xx&querySql=xx&queryValues&order=xx&etc1=...&etc2=...
 
@@ -164,7 +169,7 @@ sortable : true の場合には、orderは厳密にチェックされ、GUIと�
  
 ####<a name="dsclgridload-server"></a>サーバ側の実装####
 
-前述のdsclgridLoadメソッド呼び出しによって、dsclgridはURLパラメータで指定したURLに、
+前述のdsclgridLoadメソッド呼び出しによって、dsclgrid.jsはURLパラメータで指定したURLに、
 パラメータを付与してアクセスします。サーバ側はパラメータを受け取り、適切なデータソースからデータを取得、
 結果を以下のJSONで返却してください。
 
@@ -190,6 +195,8 @@ clはオプションで行単位で付与することで、その行の tr タ�
 
 実際に表示されるcellの値は、dsclgrid.jsでエスケープしていません。サーバ側で適切にエスケープ（CSS等対策）してください。
 反面、改行タグやアンカータグを自由に入れることができます。
+
+簡易編集機能については、[簡易編集の説明](/edit.html)をご参照ください。
 
 <a name="etcmethod"></a>その他のメソッド
 -----

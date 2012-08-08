@@ -157,7 +157,10 @@ $(function(){
 このようにdivをひとつ用意し、jQueryの一般的なライブラリと同様にdsclgridメソッドで表を生成し、
 dsclgridLoadメソッドでデータをサーバからロードすることができました！
 
-[さらに詳しい説明へ](details.html)
+####さらに・・・####
+
+[詳しい説明へ](details.html)
+[簡易編集の説明へ](edit.html)
 
 License
 -----
