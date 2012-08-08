@@ -263,7 +263,7 @@
                         if(p.editable) {
                             var td = document.createElement('td');
                             td.align = 'center';
-                            td.innerHTML = '<span class="normal">' + p.htmlEdit + p.htmlNone + p.htmlNone +  p.htmlRemove + '</span>' + '<span class="editing">' + p.htmlNone + p.htmlUpdate + p.htmlCancel + p.htmlNone + '</span>' + '<span class="exclude">' + p.htmlNone + p.htmlNone + p.htmlNone + p.htmlNone + '</span>';
+                            td.innerHTML = '<span class="normal">' + p.htmlEdit + p.htmlNone + p.htmlNone +  p.htmlRemove + '&nbsp;</span>' + '<span class="editing">' + p.htmlNone + p.htmlUpdate + p.htmlCancel + p.htmlNone + '&nbsp;</span>' + '<span class="exclude">' + p.htmlNone + p.htmlNone + p.htmlNone + p.htmlNone + '&nbsp;</span>';
 
                             $('span.editing', td).hide();
                             $('span.exclude', td).hide();
@@ -303,7 +303,7 @@
                         var tr = document.createElement('tr');
                         var td = document.createElement('td');
                         td.align = 'center';
-                        td.innerHTML = '<span class="normal">' + p.htmlAdd + p.htmlNone + p.htmlNone + '</span>' + '<span class="editing">' + p.htmlNone + p.htmlRegist + p.htmlCancel + '</span>' + '<span class="exclude">' + p.htmlNone + p.htmlNone + p.htmlNone + '</span>';
+                        td.innerHTML = '<span class="normal">' + p.htmlAdd + p.htmlNone + p.htmlNone + '&nbsp;</span>' + '<span class="editing">' + p.htmlNone + p.htmlRegist + p.htmlCancel + '&nbsp;</span>' + '<span class="exclude">' + p.htmlNone + p.htmlNone + p.htmlNone + '&nbsp;</span>';
                         $('span.editing', td).hide();
                         $('span.exclude', td).hide();
                         $(tr).append(td);
@@ -353,7 +353,7 @@
                     var td = document.createElement('td');
                     td.align = 'center';
                     //td.innerHTML = '<span class="normal"><a class="edit" href="#">[＋]</a>[〆][×]</span>' + '<span class="editing">[＋]<a class="regist" href="#">[〆]</a><a class="cancel" href="#">[×]</a></span>' + '<span class="exclude">[＋][〆][×]</span>';
-                    td.innerHTML = '<span class="normal">' + p.htmlAdd + p.htmlNone + p.htmlNone + '</span>' + '<span class="editing">' + p.htmlNone + p.htmlRegist + p.htmlCancel + '</span>' + '<span class="exclude">' + p.htmlNone + p.htmlNone + p.htmlNone + '</span>';
+                    td.innerHTML = '<span class="normal">' + p.htmlAdd + p.htmlNone + p.htmlNone + '&nbsp;</span>' + '<span class="editing">' + p.htmlNone + p.htmlRegist + p.htmlCancel + '&nbsp;</span>' + '<span class="exclude">' + p.htmlNone + p.htmlNone + p.htmlNone + '&nbsp;</span>';
                     $('span.editing', td).hide();
                     $('span.exclude', td).hide();
                     $(tr).append(td);
