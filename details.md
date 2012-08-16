@@ -6,7 +6,8 @@ title: dsclgrid.js - 詳しい説明
 Contents
 -----
 
-[トップページ](index.html)
+[>>トップページ](index.html)  
+[>>簡易編集の説明](edit.html)
 
 詳しい説明
 
@@ -27,7 +28,6 @@ Contents
     *  [dsclgridGetSorterOrder](#dsclgridGetSorterOrder)
     *  [dsclgridDisabled](#dsclgridDisabled)
 
-[簡易編集の説明](edit.html)
 
 <a name="generate"></a>dsclgridの生成
 -----
@@ -255,3 +255,6 @@ editable=trueのときに、disabledをtrue/falseします。ロックに利用�
 
     $(xxx).dsclgridDisabled( true );
 
+
+[>>トップページ](index.html)  
+[>>簡易編集の説明](edit.html)
