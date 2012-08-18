@@ -6,10 +6,10 @@ title: dsclgrid.js - 簡易編集の説明
 Contents
 -----
 
-[>>トップページ](index.html)    
-[>>詳しい説明](details.html)
+[>>1.トップページ](index.html)    
+[>>3.詳しい説明](details.html)
 
-簡易編集の説明
+2.簡易編集の説明
 
 *  [簡易編集機能とは](#edit)
 *  [実装例](#sample)
@@ -178,5 +178,5 @@ dsclgrid.jsは本制御を意図した仕組みを有します。
 トランザクショントークン制御に利用することができます。
 
 
-[>>トップページ](index.html)    
-[>>詳しい説明](details.html)
+[>>1.トップページ](index.html)    
+[>>3.詳しい説明](details.html)

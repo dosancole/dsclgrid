@@ -7,6 +7,9 @@ dsclgrid.js is a multi-functional table(fixed table head and side) for jQuery.
 
 [Japanese](index.html) / English
 
+[go to explanation of simple edit](edit.html)(sorry, only japanese.)  
+[go to detailed explanation](details.html)(sorry, only japanese.)
+
 Features
 -----
 In the development of Web applications business system,
@@ -21,6 +24,7 @@ dsclgrid.js is a multi-functional table with the following features were intende
 -   select row.
 -   quick edit.
 
+*"dscl" of "dsclgrid" is the abbreviation of account name(dosancole).
 
 Sample View
 -----
@@ -43,11 +47,11 @@ $(function(){
         selectable: true,
         model : [
             {display: 'user name', name : 'name',    width: 100, align: 'left'  },
-            {display: 'number', name : 'number',  width: 80,  align: 'center'},
-            {display: 'address',    name : 'depart',  width: 200, align: 'left'  },
-            {display: 'age',    name : 'age',     width: 50,  align: 'right' },
-            {display: 'tel', name : 'tel',     width: 200, align: 'center' },
-            {display: 'comment',    name : 'comment', width: 200, align: 'left'  }
+            {display: 'number',    name : 'number',  width: 80,  align: 'center'},
+            {display: 'address',   name : 'depart',  width: 200, align: 'left'  },
+            {display: 'age',       name : 'age',     width: 50,  align: 'right' },
+            {display: 'tel',       name : 'tel',     width: 200, align: 'center' },
+            {display: 'comment',   name : 'comment', width: 200, align: 'left'  }
         ]
     });
     $('#qv').dsclgridLoad();
@@ -93,10 +97,10 @@ First, please prepare the following html file.
             fixedCols : 2,
             model : [
                 {display: 'user name', name : 'name',    width: 100, align: 'left'  },
-                {display: 'number', name : 'number',  width: 80,  align: 'center'},
-                {display: 'address',    name : 'depart',  width: 150, align: 'left'  },
-                {display: 'age',    name : 'age',     width: 50,  align: 'right' },
-                {display: 'comment',    name : 'comment', width: 200, align: 'left'  }
+                {display: 'number',    name : 'number',  width: 80,  align: 'center'},
+                {display: 'address',   name : 'depart',  width: 150, align: 'left'  },
+                {display: 'age',       name : 'age',     width: 50,  align: 'right' },
+                {display: 'comment',   name : 'comment', width: 200, align: 'left'  }
             ]
         });
         $('#sample000').dsclgridLoad();
@@ -142,10 +146,10 @@ $(function(){
         url: "sample/000/data.json",
         fixedCols : 2,
         model : [
-            {display: 'user name', name : 'name',    width: 100, align: 'left'  },
-            {display: 'number', name : 'number',  width: 80,  align: 'center'},
+            {display: 'user name',  name : 'name',    width: 100, align: 'left'  },
+            {display: 'number',     name : 'number',  width: 80,  align: 'center'},
             {display: 'address',    name : 'depart',  width: 150, align: 'left'  },
-            {display: 'age',    name : 'age',     width: 50,  align: 'right' },
+            {display: 'age',        name : 'age',     width: 50,  align: 'right' },
             {display: 'comment',    name : 'comment', width: 200, align: 'left'  }
         ]
     });
@@ -158,8 +162,8 @@ In the way, we were able to easily load data from the server!
 
 ####In addition...####
 
-[go to detailed explanation](details.html)(sorry, only japanese.)  
-[go to explanation of simple edit](edit.html)(sorry, only japanese.)
+[go to explanation of simple edit](edit.html)(sorry, only japanese.)  
+[go to detailed explanation](details.html)(sorry, only japanese.)
 
 License
 -----

@@ -6,10 +6,10 @@ title: dsclgrid.js - 詳しい説明
 Contents
 -----
 
-[>>トップページ](index.html)  
-[>>簡易編集の説明](edit.html)
+[>>1.トップページ](index.html)  
+[>>2.簡易編集の説明](edit.html)
 
-詳しい説明
+3.詳しい説明
 
 *  [dsclgridの生成](#generate)
     *  [dsclgrid（コンストラクタ）](#constructor)
@@ -256,5 +256,5 @@ editable=trueのときに、disabledをtrue/falseします。ロックに利用�
     $(xxx).dsclgridDisabled( true );
 
 
-[>>トップページ](index.html)  
-[>>簡易編集の説明](edit.html)
+[>>1.トップページ](index.html)  
+[>>2.簡易編集の説明](edit.html)

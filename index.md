@@ -8,6 +8,9 @@ dsclgrid.js is a multi-functional table(fixed table head and side) for jQuery.
 
 Japanese / [English](index_en.html)
 
+[>>2.簡易編集の説明へ](edit.html)  
+[>>3.詳しい説明へ](details.html)
+
 Features
 -----
 
@@ -21,6 +24,7 @@ dsclgrid.jsは、業務系Webアプリケーションでの利用を想定した
 -   行選択
 -   簡易編集
 
+※dsclgridのdsclはアカウント名(dosancole)の略字をあてています。読めなくてごめんなさい^^;
 
 Sample View
 -----
@@ -161,8 +165,8 @@ dsclgridLoadメソッドでデータをサーバからロードすることが�
 
 ####さらに・・・####
 
-[>>詳しい説明へ](details.html)  
-[>>簡易編集の説明へ](edit.html)
+[>>2.簡易編集の説明へ](edit.html)  
+[>>3.詳しい説明へ](details.html)
 
 License
 -----
