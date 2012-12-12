@@ -1,5 +1,5 @@
 /*
- * dsclgrid for jQuery - v0.5
+ * dsclgrid.js for jQuery - v1.0 2012.12.12
  * http://dosancole.github.com/dsclgrid/
  *
  * Copyright (c) 2011- takuya Dosancole.
@@ -47,8 +47,15 @@
             toScrollLeft : 0,
             toScrollBottomAtOnce : false,
             disabled : false,
+            autosize : false,
+            autoMarginWidth : 100,
+            autoMarginHeight : 100,
             empty : true
         }, p);
+        if(p.autosize){
+            p.width=($(window).width()-p.autoMarginWidth)+"px";
+            p.height=($(window).height()-p.autoMarginHeight)+"px";
+        }
         p.order = p.sortBase;
         if(p.modeluse) {
             // モデルの削減
@@ -93,6 +100,38 @@
         // create grid class.
         // -----------------------------
         var grid = {
+        	changeWidth : function(width) {
+        		if( width > p.mygrid.find('div.sFHeader').width()+100 ){
+	                var diff = width - p.mygrid.width();
+	        		p.width=width+'px';
+	                p.mytitlebar.css({
+	                    width : p.width
+	                });
+	                p.mygrid.css({
+	                    width : p.width
+	                });
+	                p.mypager.css({
+	                    width : p.width
+	                });
+	                var $sData = p.mygrid.find('div.sData');
+	                $sData.css({
+	                    width : ($sData.width()+diff)+'px'
+	                });
+        		}
+        	},
+        	changeHeight : function(height) {
+        		if( height > p.mygrid.find('div.sFHeader').height()+100 ){
+	                var diff = height - p.mygrid.height();
+	        		p.height=height+'px';
+	                p.mygrid.css({
+	                    height : p.height
+	                });
+	                var $sData = p.mygrid.find('div.sData');
+	                $sData.css({
+	                	height : ($sData.height()+diff)+'px'
+	                });
+        		}
+        	},
             createEmptyTable : function() {
                 var innerTable = grid.createTableDummyRows(grid.createTableHeader());
                 p.mygrid.append(innerTable);
@@ -352,7 +391,6 @@
                 if(p.editable) {
                     var td = document.createElement('td');
                     td.align = 'center';
-                    //td.innerHTML = '<span class="normal"><a class="edit" href="#">[＋]</a>[〆][×]</span>' + '<span class="editing">[＋]<a class="regist" href="#">[〆]</a><a class="cancel" href="#">[×]</a></span>' + '<span class="exclude">[＋][〆][×]</span>';
                     td.innerHTML = '<span class="normal">' + p.htmlAdd + p.htmlNone + p.htmlNone + '&nbsp;</span>' + '<span class="editing">' + p.htmlNone + p.htmlRegist + p.htmlCancel + '&nbsp;</span>' + '<span class="exclude">' + p.htmlNone + p.htmlNone + p.htmlNone + '&nbsp;</span>';
                     $('span.editing', td).hide();
                     $('span.exclude', td).hide();
@@ -1145,10 +1183,15 @@
                 }
             }
         };
+        if(p.autosize){
+            $( window ).resize( function(){
+                grid.changeWidth( $(window).width()-p.autoMarginWidth );
+                grid.changeHeight( $(window).height()-p.autoMarginHeight );
+            });
+        }
         // -----------------------------
         // create main DOM.
         // -----------------------------
-        /*$(t).css( {'font-size': '16px'} );*/
         // create titlebar
         var divTitlebar = document.createElement('div');
         p.mytitlebar = $(divTitlebar);
@@ -1264,6 +1307,20 @@
             }
         });
     };
+    $.fn.dsclgridWidth = function(width) {
+        return this.each(function() {
+            if(this.grid) {
+                this.grid.changeWidth(width);
+            }
+        });
+    };
+    $.fn.dsclgridHeight = function(height) {
+        return this.each(function() {
+            if(this.grid) {
+                this.grid.changeHeight(height);
+            }
+        });
+    };
     $.fn.dsclgridSelectByNo = function(no) {
         return this.each(function() {
             if(this.grid) {
@@ -1319,6 +1376,15 @@
         this.each(function() {
             if(this.grid) {
                 r = this.p.order;
+            }
+        });
+        return r;
+    };
+    $.fn.dsclgridGetUserParam = function() {
+        var r;
+        this.each(function() {
+            if(this.grid) {
+                r = this.p.userParam;
             }
         });
         return r;
