@@ -25,8 +25,11 @@ Contents
     *  [dsclgridGetSelectedId](#dsclgridGetSelectedId)
     *  [dsclgridGetSelectedCell](#dsclgridGetSelectedCell)
     *  [dsclgridGetSelectedHidden](#dsclgridGetSelectedHidden)
+    *  [dsclgridGetUserParam](#dsclgridGetUserParam)
     *  [dsclgridGetSorterOrder](#dsclgridGetSorterOrder)
     *  [dsclgridDisabled](#dsclgridDisabled)
+    *  [dsclgridWidth](#dsclgridWidth)
+    *  [dsclgridHeight](#dsclgridHeight)
 
 
 <a name="generate"></a>dsclgridの生成
@@ -52,10 +55,15 @@ dsclgridオブジェクトは、jqueryオブジェクトに対してdsclgrid()�
 
 パラメータ一覧とその説明を以下に示します。
 
-    width: "800px",                            // 横幅
-    height: "200px",                           // 縦幅
-    method: "POST",                            // ajaxのメソッド種別
-    url: "/hoge/ajaxList",               // 必須。検索のURL
+    width: "800px",                   // 横幅
+    height: "200px",                  // 縦幅
+    autosize : false,                 // trueの場合、右下からautoMarginWidthとautoMarginHeight分の
+                                      // マージンをとってブラウザのウィンドウサイズに追従します。
+                                      // widthとheightは無視されます。
+    autoMarginWidth : 100,            // autosize=true時の横のマージンサイズ
+    autoMarginHeight : 100,           // autosize=true時の縦のマージンサイズ
+    method: "POST",                   // ajaxのメソッド種別
+    url: "/hoge/ajaxList",            // 必須。検索のURL
     urlRegist:  "/hoge/ajaxRegist",   // 登録のURL
     urlUpdate:  "/hoge/ajaxUpdate",   // 更新のURL
     urlDelete:  "/hoge/ajaxDelete",   // 削除のURL
@@ -240,6 +248,14 @@ Hiddenデータは配列となります。サーバが返却するJSONに含ま�
 
     var cell = $(xxx).dsclgridGetSelectedHidden();
 
+####<a name="dsclgridGetUserParam"></a>dsclgridGetUserParam####
+
+ajaxでサーバに送信されるパラメータを取得します。
+基本的にdsclgridLoad内で自動で付与されるため扱う必要はないですが、
+本パラメータを別のリクエストに使いたい場合など（ダウンロードなど）に利用します。
+
+    var userParam = $(xxx).dsclgridGetUserParam(); // ex. [{name:'dsclgridPage',value:2},{name:'dsclgridRp',value:30},...]
+
 ####<a name="dsclgridGetSorterOrder"></a>dsclgridGetSorterOrder####
 
 ソータによるオーダ文字列を取得します。sortBaseも付与されたものです。
@@ -255,6 +271,17 @@ editable=trueのときに、disabledをtrue/falseします。ロックに利用�
 
     $(xxx).dsclgridDisabled( true );
 
+####<a name="dsclgridWidth"></a>dsclgridWidth####
+
+横幅を動的に修正します。
+
+    $(xxx).dsclgridWidth( 200 ); // ex. change to 200px
+
+####<a name="dsclgridHeight"></a>dsclgridHeight####
+
+縦幅を動的に修正します。
+
+    $(xxx).dsclgridHeight( 200 ); // ex. change to 200px
 
 [>>1.トップページ](index.html)  
 [>>2.簡易編集の説明](edit.html)

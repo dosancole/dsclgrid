@@ -62,8 +62,20 @@ $(function(){
 Change Log
 -----
 
+*  <span style="color:#D5000D;">v1.0 2012.12.12 NEW!</span>
+    *  windowのサイズに合わせて表の大きさを調整するautosize初期化パラメータを追加。
+    *  一覧取得(ajax)時にサーバに渡される現在のパラメータを取得するメソッド追加。
+    *  実案件で1年間動作した安定版。
 *  v0.5
     *  first public version.
+
+Required
+-----
+
+*  IE9,8,7 FF, Chrome
+*  jquery-1.6,x,1.8.x, jquery-ui-1.8.x（確認したverを記載）
+
+※jqueryベースのため、大抵のブラウザで稼働します。
 
 Quick Start
 -----

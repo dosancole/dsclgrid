@@ -62,8 +62,20 @@ $(function(){
 Change Log
 -----
 
+*  <span style="color:#D5000D;">v1.0 2012.12.12 NEW!</span>
+    *  initial parameter(autosize) added.
+    *  getUserparam method added.
+    *  stable version (that worked for one year in the real project).
 *  v0.5
     *  first public version.
+
+Required
+-----
+
+*  IE9,8,7 FF, Chrome
+*  jquery-1.6,x,1.8.x, jquery-ui-1.8.x
+
+*dsclgird.js can be run on most browsers.
 
 Quick Start
 -----
