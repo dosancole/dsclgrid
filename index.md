@@ -62,6 +62,8 @@ $(function(){
 Change Log
 -----
 
+*  <span style="color:#D5000D;">v1.01 2012.12.20 NEW!</span>
+    *  autosize=true/pager=false時の不具合を是正。
 *  <span style="color:#D5000D;">v1.0 2012.12.12 NEW!</span>
     *  windowのサイズに合わせて表の大きさを調整するautosize初期化パラメータを追加。
     *  一覧取得(ajax)時にサーバに渡される現在のパラメータを取得するメソッド追加。
