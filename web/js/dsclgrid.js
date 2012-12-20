@@ -1,5 +1,5 @@
 /*
- * dsclgrid.js for jQuery - v1.0 2012.12.12
+ * dsclgrid.js for jQuery - v1.01 2012.12.20
  * http://dosancole.github.com/dsclgrid/
  *
  * Copyright (c) 2011- takuya Dosancole.
@@ -104,15 +104,19 @@
         		if( width > p.mygrid.find('div.sFHeader').width()+100 ){
 	                var diff = width - p.mygrid.width();
 	        		p.width=width+'px';
-	                p.mytitlebar.css({
-	                    width : p.width
-	                });
-	                p.mygrid.css({
-	                    width : p.width
-	                });
-	                p.mypager.css({
-	                    width : p.width
-	                });
+	        		if( p.mytitlebar ){
+	        			p.mytitlebar.css({
+	        				width : p.width
+	        			});
+	        		}
+	        		p.mygrid.css({
+	        			width : p.width
+	        		});
+	        		if( p.mypager ){
+	        			p.mypager.css({
+	        				width : p.width
+	        			});
+	        		}
 	                var $sData = p.mygrid.find('div.sData');
 	                $sData.css({
 	                    width : ($sData.width()+diff)+'px'
@@ -668,7 +672,7 @@
                 stat = stat.replace(/{from}/, r1);
                 stat = stat.replace(/{to}/, r2);
                 stat = stat.replace(/{total}/, p.total);
-                $('.pMessage', p.mypager).html(stat);
+                $('.pMessage', p.mypager).html('<span>'+stat+'</span>');
             },
             bindHandler : function() {
                 // clickable
