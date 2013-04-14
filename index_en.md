@@ -5,7 +5,7 @@ title: dsclgrid.js - multi-functional table(fixed table head and side) for jQuer
 
 dsclgrid.js is a multi-functional table(fixed table head and side) for jQuery.
 
-[Japanese](/) / English
+[Japanese](./) / English
 
 [go to explanation of simple edit](edit.html)(sorry, only japanese.)  
 [go to detailed explanation](details.html)(sorry, only japanese.)
