@@ -83,7 +83,7 @@ Quick Start
 -----
 
 We will try to display a simple table(fixed head and side).
-In advance, please extract the files that you [downloaded](https://github.com/dosancole/dsclgrid/zipball/master).
+In advance, please extract the files that you [downloaded](download_zip.html).
 
 First, please prepare the following html file.
 *Url(css and javascript, data.json), please fixe by location.

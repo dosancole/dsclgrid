@@ -83,7 +83,7 @@ Quick Start
 -----
 
 ここでは表頭・表側固定の一番シンプルなテーブルを表示してみます。
-事前に[ダウンロード](https://github.com/dosancole/dsclgrid/zipball/master "ダウンロード")したファイルを展開、配置しておいてください。
+事前に[ダウンロード](download_zip.html "ダウンロード")したファイルを展開、配置しておいてください。
 参照可能な位置にhtmlファイルとJSONのデータファイルを作成します。
 
 
