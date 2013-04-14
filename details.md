@@ -6,7 +6,7 @@ title: dsclgrid.js - 詳しい説明
 Contents
 -----
 
-[>>1.トップページ](index.html)  
+[>>1.トップページ](./)  
 [>>2.簡易編集の説明](edit.html)
 
 3.詳しい説明
@@ -283,5 +283,5 @@ editable=trueのときに、disabledをtrue/falseします。ロックに利用�
 
     $(xxx).dsclgridHeight( 200 ); // ex. change to 200px
 
-[>>1.トップページ](index.html)  
+[>>1.トップページ](./)  
 [>>2.簡易編集の説明](edit.html)
