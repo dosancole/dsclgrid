@@ -163,7 +163,7 @@ var superTable = function (tableId, options) {
 
     // for dsclgrid.
     this.sHeaderInner.style.right = options.toScrollLeft + "px";
-    this.sFDataInner.style.top = (options.toScrollTop * -1) + "px";
+    // this.sFDataInner.style.top = (options.toScrollTop * -1) + "px";
     // for dsclgrid.
 
 /////* Align the tables */
@@ -208,7 +208,7 @@ var superTable = function (tableId, options) {
 	this.sDataTable.style.cssText = sDataTableStyles;
 
     // for dsclgrid.
-    this.sData.scrollTop = options.toScrollTop;
+    // this.sData.scrollTop = options.toScrollTop;
     this.sData.scrollLeft = options.toScrollLeft;
     // for dsclgrid.
 
