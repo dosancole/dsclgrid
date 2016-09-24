@@ -43,6 +43,9 @@
             onDblClick: false,
             onLoad: false,
             onSelectChanged: false,
+            onCheckChanged: false,
+            onPreLoad: false,
+            onError: false,
             toScrollTop: 0,
             toScrollLeft: 0,
             toScrollBottomAtOnce: false,
@@ -50,6 +53,7 @@
             autosize: false,
             autoMarginWidth: 100,
             autoMarginHeight: 100,
+            checkable: false,
             empty: true
         }, p);
         if (p.autosize) {
@@ -102,7 +106,7 @@
         var grid = {
             changeWidth: function (width) {
                 if (width > p.mygrid.find('div.sFHeader').width() + 100) {
-                    var diff = width - p.mygrid.width();
+                    var diff = width - parseInt(p.mygrid.css('width'), 10);
                     p.width = width + 'px';
                     if (p.mytitlebar) {
                         p.mytitlebar.css({
@@ -125,7 +129,7 @@
             },
             changeHeight: function (height) {
                 if (height > p.mygrid.find('div.sFHeader').height() + 100) {
-                    var diff = height - p.mygrid.height();
+                    var diff = height - parseInt(p.mygrid.css('height'), 10);
                     p.height = height + 'px';
                     p.mygrid.css({
                         height: p.height
@@ -219,16 +223,35 @@
                 p.loading = true;
                 $('.icon', p.mytitlebar).addClass('loading');
                 $('.icon', p.mypager).addClass('loading');
+                if (p.onPreLoad) {
+                    p.onPreLoad(param);
+                }
                 $.ajax({
                     type: p.method,
                     url: p.url,
                     data: param,
                     dataType: 'json',
                     success: function (data) {
-                        if (data.error != null && data.error.length > 0) {
+                        if ((data.error != null && data.error.length > 0) || data.errors != null || data.systemerror != null) {
                             // エラー時処理
-                            p.mympanel.html('<div class="actionErrors"><ul><li>' + data.error + '</li></ul></div>');
-                            p.mympanel.dialog('open');
+                            if (p.onError) {
+                                p.onError(data);
+                            } else {
+                                if (data.error) {
+                                    alert(data.error);
+                                } else if (data.systemerror) {
+                                    alert(data.systemerror);
+                                } else if (data.errors) {
+                                    var message = '';
+                                    $.each(json.errors, function (k, v) {
+                                        $.each(v, function (i, vv) {
+                                            message += vv;
+                                        });
+                                        message += '/'
+                                    });
+                                    alert(message);
+                                }
+                            }
                             p.empty = true;
                             grid.createEmptyTable();
                             grid.bindHandler();
@@ -286,9 +309,11 @@
                 var html = '<tr>';
                 if (p.editable) {
                     html += '<th>操作</th>';
+                } else if (p.checkable) {
+                    html += '<th><input type="checkbox"></input></th>';
                 }
                 $.each(p.model, function (i, m) {
-                    html += '<th>' + m.display + '</th>';
+                    html += '<th class="' + m.thclass + '">' + m.display + '</th>';
                 });
                 $(innerTable).html(html);
                 return innerTable;
@@ -376,9 +401,26 @@
                                 html += '<tr class="even">';
                             }
                         }
-                        $.each(row.cell, function (i, c) {
-                            html += '<td align="' + p.model[i].align + '">' + c + '</td>';
-                        });
+                        if (p.checkable) {
+                            if (row.summary) {
+                                html += '<td align="center"> </td>';
+                            } else {
+                                html += '<td align="center"><input type="checkbox"></input></td>';
+                            }
+                        }
+                        if (row.summary) {
+                            $.each(row.cell, function (i, c) {
+                                if (i == 0) {
+                                    html += '<td align="center">(合計)</td>';
+                                } else {
+                                    html += '<td align="' + p.model[i].align + '">' + c + '</td>';
+                                }
+                            });
+                        } else {
+                            $.each(row.cell, function (i, c) {
+                                html += '<td align="' + p.model[i].align + '">' + c + '</td>';
+                            });
+                        }
                         html += '</tr>';
                     });
                     $(innerTable).append(html);
@@ -399,6 +441,10 @@
                     $('span.exclude', td).hide();
                     $(tr).append(td);
                     td = null;
+                } else if (p.checkable) {
+                    var td = document.createElement('td');
+                    $(tr).append(td);
+                    td = null;
                 }
                 $.each(p.model, function (i, c) {
                     var td = document.createElement('td');
@@ -415,6 +461,8 @@
                 var cws = p.colWidths;
                 if (p.editable) {
                     cws = $.merge([120], cws);
+                } else if (p.checkable) {
+                    cws = $.merge([50], cws);
                 }
                 var mySt = new superTable(p.innerTableId, {
                     cssSkin: p.cssSkin,
@@ -454,7 +502,7 @@
                     // ヘッダループ
                     p.mygrid.find('div.sFHeader tr th').each(function (num) {
                         var setnum = num;
-                        if (p.editable) {
+                        if (p.editable || p.checkable) {
                             setnum--;
                         }
                         var $t = $(this);
@@ -468,7 +516,7 @@
                     });
                     p.mygrid.find('div.sHeader tr th').each(function (num) {
                         var setnum = num;
-                        if (p.editable) {
+                        if (p.editable || p.checkable) {
                             setnum--;
                         }
                         var $t = $(this);
@@ -604,12 +652,14 @@
                     if (e.keyCode == 13)
                         grid.changePage('input')
                 });
+                /* 2015.4.5 comment out
                 if ($.browser.msie && $.browser.version < 7)
                     $('.pButton', p.mypager).hover(function () {
                         $(this).addClass('pBtnOver');
                     }, function () {
                         $(this).removeClass('pBtnOver');
                     });
+                    */
             },
             changePage: function (ctype) {
                 if (p.loading) {
@@ -674,10 +724,24 @@
             bindHandler: function () {
                 // clickable
                 if (!p.editable && p.selectable && !p.empty) {
-                    p.mygrid.find('div.sFData tr,div.sData tr').css('cursor', 'pointer').click(function () {
+                    p.mygrid.find('div.sFData tr,div.sData tr').css('cursor', 'pointer').click(function (e) {
                         var $t = $(this);
                         p.mygrid.find('tr.rowselect').removeClass('rowselect');
                         p.mygrid.find('tr.row' + $t.data('row')).addClass('rowselect');
+                        if (p.checkable) {
+                            if (!$(e.target).is('input')) {
+                                var $cb = p.mygrid.find('tr.row' + $t.data('row') + ' td:first input');
+                                if ($cb.attr('checked')) {
+                                    $cb.removeAttr('checked');
+                                    p.mygrid.find('div.sFHeader th:first input').removeAttr('checked');
+                                } else {
+                                    $cb.attr('checked', 'checked');
+                                }
+                            }
+                            if (p.onCheckChanged) {
+                                p.onCheckChanged();
+                            }
+                        }
                         if (p.onSelectChanged) {
                             p.onSelectChanged();
                         }
@@ -690,14 +754,41 @@
                             p.onDblClick($t.data('id'), $t.data('versionNo'), $t.data('cell'), $t.data('row') - 1, $t.data('hidden'));
                         }
                     });
+                    // check all
+                    if (p.checkable) {
+                        // TODO allチェックボックスは3回呼ばれて帳尻があう問題があり。
+                        var checkAllFunc = function (e) {
+                            var $cb = p.mygrid.find('div.sFHeader th:first input');
+                            if ($cb.attr('checked')) {
+                                $cb.removeAttr('checked');
+                                p.mygrid.find('tr td:first-child input').removeAttr('checked');
+                            } else {
+                                $cb.attr('checked', 'checked');
+                                p.mygrid.find('tr td:first-child input').attr('checked', 'checked');
+                            }
+                            if (p.onCheckChanged) {
+                                p.onCheckChanged();
+                            }
+                        };
+                        p.mygrid.find('div.sFHeader th:first').css('cursor', 'pointer').click(checkAllFunc);
+                        p.mygrid.find('div.sFHeader th:first input').click(checkAllFunc);
+                    }
                 }
                 // sortable
                 if (p.sortable) {
                     var selector = 'div.sFHeader tr th,div.sHeader tr th';
-                    if (p.editable) {
+                    if (p.editable || p.checkable) {
                         selector = 'div.sFHeader tr th:gt(0),div.sHeader tr th:gt(0)';
                     }
-                    p.mygrid.find(selector).css('cursor', 'pointer').click(function (e) {
+                    // attach css
+                    p.mygrid.find(selector).each( function(){
+                        var coln = $(this).data('coln');
+                        if (p.model[coln].sortable == null || p.model[coln].sortable) {
+                            $(this).css('cursor', 'pointer');
+                        }
+                    });
+                    // attach click event
+                    p.mygrid.find(selector).click(function (e) {
                         if (e.which == 3) { // 右クリックはキャンセル
                             return;
                         }
@@ -841,7 +932,9 @@
                                     $('input', this).width($(this).width());
                                     //$('input', this).height($(this).height());
                                 } else if (edittype == 'date') {
-                                    $(this).html('<input type="text" value="' + $(this).text() + '"/>');
+                                    var v = $(this).text();
+                                    $(this).html('<input type="text" value=""/>');
+                                    $('input', this).val(v);
                                     $('input', this).datepicker({
                                         showOn: 'button',
                                         buttonImage: p.calendarIconUrl,
@@ -853,7 +946,9 @@
                                     $('input', this).width($(this).width() - 32);
                                     //$('input', this).height($(this).height());
                                 } else {
-                                    $(this).html('<input type="text" value="' + $(this).text() + '"/>');
+                                    var v = $(this).text();
+                                    $(this).html('<input type="text" value=""/>');
+                                    $('input', this).val(v);
                                     $('input', this).width($(this).width());
                                     //$('input', this).height($(this).height());
                                 }
@@ -1135,6 +1230,42 @@
                 }
                 return null;
             },
+            checkByNos: function (nos, uncheck) {
+                $.each(nos, function (i, no) {
+                    var selector = 'tr.row' + (no + 1) + ' td:first input';
+                    if (uncheck) {
+                        $(selector, p.mygrid).removeAttr('checked');
+                    } else {
+                        $(selector, p.mygrid).attr('checked', 'checked');
+                    }
+                });
+            },
+            checkByIds: function (ids, uncheck) {
+                $('div.sFData tr', p.mygrid).each(function (num) {
+                    $thisTr = $(this);
+                    $.each(ids, function (i, id) {
+                        var idStr = '' + id;
+                        if ($thisTr.data('id') == idStr) {
+                            var selector = 'tr.row' + $thisTr.data('row') + ' td:first input';;
+                            if (uncheck) {
+                                $(selector, p.mygrid).removeAttr('checked');
+                            } else {
+                                $(selector, p.mygrid).attr('checked', 'checked');
+                            }
+                            return false;
+                        }
+                    });
+                });
+            },
+            getChecked: function (isNo) {
+                return $.map($('div.sFData input:checked', p.mygrid), function (n, i) {
+                    if (isNo) {
+                        return $(n).closest('tr').data('row') - 1;
+                    } else {
+                        return $(n).closest('tr').data('id');
+                    }
+                });
+            },
             parseSorterOrder: function (str) {
                 var baseIndex = str.lastIndexOf(p.sortBase);
                 if (baseIndex != -1) {
@@ -1236,9 +1367,11 @@
         // create messagepanel
         var divmpanel = document.createElement('div');
         p.mympanel = $(divmpanel);
+        p.mympanel.attr("id", "dsclmpanel");
         p.mympanel.addClass('dsclmpanel');
         $(t).append(divmpanel);
-        $(p.mympanel).dialog({
+        /* 2015.4.5 ダイアログを依存させない対処前仮 
+        p.mympanel.dialog({
             autoOpen: false,
             width: 600,
             title: 'メッセージ',
@@ -1250,6 +1383,7 @@
                 }
             }
         });
+        */
         divmpanel = null;
 
         $(t).show();
@@ -1361,6 +1495,52 @@
         this.each(function () {
             if (this.grid) {
                 r = this.grid.getSelectedHidden();
+            }
+        });
+        return r;
+    };
+    $.fn.dsclgridCheckByNos = function (nos) {
+        return this.each(function () {
+            if (this.grid) {
+                this.grid.checkByNos(nos);
+            }
+        });
+    };
+    $.fn.dsclgridUncheckByNos = function (nos) {
+        return this.each(function () {
+            if (this.grid) {
+                this.grid.checkByNos(nos, true);
+            }
+        });
+    };
+    $.fn.dsclgridCheckByIds = function (ids) {
+        return this.each(function () {
+            if (this.grid) {
+                this.grid.checkByIds(ids);
+            }
+        });
+    };
+    $.fn.dsclgridUncheckByIds = function (ids) {
+        return this.each(function () {
+            if (this.grid) {
+                this.grid.checkByIds(ids, true);
+            }
+        });
+    };
+    $.fn.dsclgridGetCheckedNos = function () {
+        var r;
+        this.each(function () {
+            if (this.grid) {
+                r = this.grid.getChecked(true);
+            }
+        });
+        return r;
+    };
+    $.fn.dsclgridGetCheckedIds = function () {
+        var r;
+        this.each(function () {
+            if (this.grid) {
+                r = this.grid.getChecked();
             }
         });
         return r;
