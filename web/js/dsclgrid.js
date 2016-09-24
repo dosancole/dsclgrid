@@ -105,6 +105,7 @@
         // -----------------------------
         var grid = {
             changeWidth: function (width) {
+
                 if (width > p.mygrid.find('div.sFHeader').width() + 100) {
                     var diff = width - parseInt(p.mygrid.css('width'), 10);
                     p.width = width + 'px';
@@ -126,6 +127,7 @@
                         width: ($sData.width() + diff) + 'px'
                     });
                 }
+
             },
             changeHeight: function (height) {
                 if (height > p.mygrid.find('div.sFHeader').height() + 100) {
@@ -232,61 +234,7 @@
                     data: param,
                     dataType: 'json',
                     success: function (data) {
-                        if ((data.error != null && data.error.length > 0) || data.errors != null || data.systemerror != null) {
-                            // エラー時処理
-                            if (p.onError) {
-                                p.onError(data);
-                            } else {
-                                if (data.error) {
-                                    alert(data.error);
-                                } else if (data.systemerror) {
-                                    alert(data.systemerror);
-                                } else if (data.errors) {
-                                    var message = '';
-                                    $.each(json.errors, function (k, v) {
-                                        $.each(v, function (i, vv) {
-                                            message += vv;
-                                        });
-                                        message += '/'
-                                    });
-                                    alert(message);
-                                }
-                            }
-                            p.empty = true;
-                            grid.createEmptyTable();
-                            grid.bindHandler();
-                        } else {
-                            if (data.rows.length > 0) {
-                                p.empty = false;
-                                p.mygrid.unbind();
-                                var innerTable = grid.createTableRows(data, grid.createTableHeader());
-                                p.mygrid.append(innerTable);
-                                innerTable = null;
-                                grid.createSuperTable(data);
-                                grid.bindHandler();
-                                p.page = data.page;
-                            } else {
-                                p.empty = true;
-                                grid.createEmptyTable();
-                                grid.bindHandler();
-                            }
-                        }
-                        if (p.toScrollBottomAtOnce) {
-                            $('div.sData', p.mygrid).scrollTop($('div.sData table', p.mygrid).height());
-                            p.toScrollBottomAtOnce = false;
-                        }
-                        if (p.pager) {
-                            grid.updatePageStatus();
-                        }
-                        if (p.onLoad) {
-                            p.onLoad(data);
-                        }
-                        if (p.onSelectChanged) {
-                            p.onSelectChanged();
-                        }
-                        p.loading = false;
-                        $('.icon', p.mytitlebar).removeClass('loading');
-                        $('.icon', p.mypager).removeClass('loading');
+                        grid.reconstructTable(data);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         try {
@@ -299,6 +247,66 @@
                         $('.icon', p.mypager).removeClass('loading');
                     }
                 });
+            },
+            reconstructTable: function (data) {
+                if ((data.error != null && data.error.length > 0) || data.errors != null || data.systemerror != null) {
+                    // エラー時処理
+                    if (p.onError) {
+                        p.onError(data);
+                    } else {
+                        if (data.error) {
+                            alert(data.error);
+                        } else if (data.systemerror) {
+                            alert(data.systemerror);
+                        } else if (data.errors) {
+                            var message = '';
+                            $.each(json.errors, function (k, v) {
+                                $.each(v, function (i, vv) {
+                                    message += vv;
+                                });
+                                message += '/'
+                            });
+                            alert(message);
+                        }
+                    }
+                    p.empty = true;
+                    grid.createEmptyTable();
+                    grid.bindHandler();
+                } else {
+                    if (data.rows.length > 0) {
+                        p.empty = false;
+                        p.mygrid.unbind();
+                        var innerTable = grid.createTableRows(data, grid.createTableHeader());
+                        p.mygrid.append(innerTable);
+                        innerTable = null;
+                        grid.createSuperTable(data);
+                        grid.bindHandler();
+                        p.page = data.page;
+                    } else {
+                        p.empty = true;
+                        grid.createEmptyTable();
+                        grid.bindHandler();
+                    }
+                }
+                if (p.toScrollBottomAtOnce) {
+                    $('div.sData', p.mygrid).scrollTop($('div.sData table', p.mygrid).height());
+                    p.toScrollBottomAtOnce = false;
+                }
+                if (p.pager) {
+                    grid.updatePageStatus();
+                }
+                if (p.onLoad) {
+                    p.onLoad(data);
+                }
+                if (p.onSelectChanged) {
+                    p.onSelectChanged();
+                }
+                if (p.cacheTabledata) {
+                    tableDataCache = data;
+                }
+                p.loading = false;
+                $('.icon', p.mytitlebar).removeClass('loading');
+                $('.icon', p.mypager).removeClass('loading');
             },
             createTableHeader: function () {
                 // construct inner table.
@@ -1210,6 +1218,16 @@
                 }
                 return -1;
             },
+            getSelectedVersionNo: function () {
+                var selectedTr = $('tr.rowselect:first', p.mygrid);
+                if (selectedTr) {
+                    var r = selectedTr.data('versionNo');
+                    if (r || r == '0') {
+                        return r;
+                    }
+                }
+                return -1;
+            },
             getSelectedCell: function () {
                 var selectedTr = $('tr.rowselect:first', p.mygrid);
                 if (selectedTr) {
@@ -1370,7 +1388,7 @@
         p.mympanel.attr("id", "dsclmpanel");
         p.mympanel.addClass('dsclmpanel');
         $(t).append(divmpanel);
-        /* 2015.4.5 ダイアログを依存させない対処前仮 
+        /* 2015.4.5 ダイアログを依存させない対処前仮
         p.mympanel.dialog({
             autoOpen: false,
             width: 600,
@@ -1481,6 +1499,15 @@
         });
         return r;
     };
+    $.fn.dsclgridGetSelectedVersionNo = function () {
+        var r;
+        this.each(function () {
+            if (this.grid) {
+                r = this.grid.getSelectedVersionNo();
+            }
+        });
+        return r;
+    };
     $.fn.dsclgridGetSelectedCell = function () {
         var r;
         this.each(function () {
@@ -1562,5 +1589,12 @@
             }
         });
         return r;
+    };
+    $.fn.dsclgridReconstructTable = function (data) {
+        return this.each(function () {
+            if (this.grid) {
+                this.grid.reconstructTable(data);
+            }
+        });
     };
 })(jQuery);
