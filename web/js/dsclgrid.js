@@ -1,8 +1,8 @@
 /*
- * dsclgrid.js for jQuery - v1.01 2012.12.20
+ * dsclgrid.js for jQuery - v1.02 2016.9.24
  * http://dosancole.github.com/dsclgrid/
  *
- * Copyright (c) 2011- takuya Dosancole.
+ * Copyright (c) 2011 takuya Dosancole.
  * Dual licensed under the MIT or GPL Version 2 licenses.
  * http://jquery.org/license
  *
