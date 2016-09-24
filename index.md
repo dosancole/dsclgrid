@@ -62,9 +62,11 @@ $(function(){
 Change Log
 -----
 
-*  <span style="color:#D5000D;">v1.01 2012.12.20 NEW!</span>
+*  <span style="color:#D5000D;">v1.02 2016.9.24 NEW!</span>
+    *  軽微な機能追加。
+*  v1.01 2012.12.20
     *  autosize=true/pager=false時の不具合を是正。
-*  <span style="color:#D5000D;">v1.0 2012.12.12 NEW!</span>
+*  v1.0 2012.12.12
     *  windowのサイズに合わせて表の大きさを調整するautosize初期化パラメータを追加。
     *  一覧取得(ajax)時にサーバに渡される現在のパラメータを取得するメソッド追加。
     *  実案件で1年間動作した安定版。
@@ -75,7 +77,7 @@ Required
 -----
 
 *  IE9,8,7 FF, Chrome
-*  jquery-1.6,x,1.8.x, jquery-ui-1.8.x（確認したverを記載）
+*  jquery-1.6,x,1.8.x,1.11.x jquery-ui-1.8.x（確認したverを記載）
 
 ※jqueryベースのため、大抵のブラウザで稼働します。
 

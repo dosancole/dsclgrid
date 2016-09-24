@@ -62,9 +62,11 @@ $(function(){
 Change Log
 -----
 
-*  <span style="color:#D5000D;">v1.01 2012.12.20 NEW!</span>
+*  <span style="color:#D5000D;">v1.02 2016.9.24 NEW!</span>
+    *  Minor additions.
+*  v1.01 2012.12.20
     *  autosize=true/pager=false bug fix.
-*  <span style="color:#D5000D;">v1.0 2012.12.12 NEW!</span>
+*  v1.0 2012.12.12
     *  initial parameter(autosize) added.
     *  getUserparam method added.
     *  stable version (that worked for one year in the real project).
